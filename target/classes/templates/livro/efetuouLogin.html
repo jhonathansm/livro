@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+		xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title> Login </title>
+</head>
+
+<body>
+
+
+<div th:each="usuario : ${usuario}">
+	<h1>Bem-Vindo!!!</h1>
+	<form>
+		<p>Nome: <span th:text= "${usuario.login}"></span>
+	</form>
+</div>
+
+</body>
+
+</html>

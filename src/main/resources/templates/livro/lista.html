@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+		xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Lista de Usuários</title>
+</head>
+
+<body>
+<h5>Lista de Usuários</h5>
+<table>
+<thead>
+	<tr>
+		<th>Id</th>
+		<th>Nome</th>
+		<th>Tipo</th>
+		<th>Deleta</th>
+	</tr>
+</thead>
+	<tbody>
+			<tr th:each="usuario : ${usuario}">
+				<td><span th:text="${usuario.id}"></span></td>
+				<td><span th:text="${usuario.login}"></span></td>
+				<td><span th:text="${usuario.tipo}"></span></td>
+				<td><a th:href="${(#mvc.url('UC#deletarUsuario').arg(0, usuario.login)).build()}">delete</a></td>
+				
+			</tr>
+		</tbody>
+		
+					
+		
+</table>
+
+<th:block th:include="mensagemValidacao"></th:block>
+<a href="cadastroAdm">Cadastro de Usuários</a>
+<a href="efetuouLoginAdm">Tela de ADM</a>
+<a href="adclivro">Adicionar Livro</a>
+</body>
+</html>

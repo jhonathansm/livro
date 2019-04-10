@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt"
+		xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://thymeleaf.org">
+<head>
+
+</head>
+
+<body>
+	<div class="container">
+		<form class="container" method="POST">
+			Nome: <input type="text" value="" name="login"/>
+			Senha: <input type="password" value="" name="senha" />
+			<button type="submit">Salvar</button>
+			
+		</form>
+			<th:block th:include="mensagemValidacao"></th:block>
+	
+	</div>
+
+</body>
+
+</html>

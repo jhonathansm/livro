@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://thymeleaf.org">
+<head>
+<title>Adicionando Livro</title>
+</head>
+
+
+<body>
+<form class="container" method="post">
+Id: <input th:value="${livro}" readonly=true name="id"/>
+Nome: <input type="text" name="nome"/>
+Autor: <input type="text" name="autor"/>
+Editora: <input type="text" name="editora"/>
+Ano de publicação: <input type="text" name="ano"/>
+Edição: <input type="text" name="edicao"/>
+Quantidade: <input type="text" name="quantidade"/>
+Preço: <input type="text" name="preco"/>
+<button type="submit">Cadastrar</button>
+</form>
+
+<a href="cadastroAdm">Cadastro de Usuários</a>
+<a href="efetuouLoginAdm">Tela de ADM</a>
+<a href="livroLivro">Lista de Livro</a>
+</body>
+</html>

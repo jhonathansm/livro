@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+		xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://thymeleaf.org">
+<head>
+<title>Lista de Livros</title>
+</head>
+
+<body>
+<h5>Lista de Usuários</h5>
+
+<table>
+<thead>
+	<tr>
+		<th>Id</th>
+		<th>Nome</th>
+		<th>Autor</th>
+		<th>Editora</th>
+		<th>Ano de Publicação</th>
+		<th>Edição</th>
+		<th>Quantidade</th>
+		<th>Preço</th>
+		<th>Deletar</th>
+		<th>Emprestimo</th>
+	</tr>
+</thead>
+
+<tbody>
+
+	<tr th:each="livro : ${livro}">
+		<td><span th:text="${livro.id}"></span></td>
+		<td><span th:text="${livro.nome}"></span></td>
+		<td><span th:text="${livro.autor}"></span></td>
+		<td><span th:text="${livro.editora}"></span></td>
+		<td><span th:text="${livro.ano}"></span></td>
+		<td><span th:text="${livro.edicao}"></span></td>
+		<td><span th:text="${livro.quantidade}"></span></td>
+		<td><span th:text="${livro.preco}"></span></td>
+		
+		<td><a th:href="${(#mvc.url('LC#deletarLivro').arg(0, livro.id)).build()}">Deletar</a></td>
+		<td><a th:href="${(#mvc.url('LC#adicionarLivro').arg(0, livro.id)).build()}">Adicionar Livro</a></td>
+		<td><a th:href="${(#mvc.url('LC#removerLivro').arg(0, livro.id)).build()}">Remover Livro</a></td>
+		
+		<td><a th:href="${(#mvc.url('LC#adicionarData').arg(0, livro.id)).build()}">Emprestimo</a></td>
+		Data: <input type="text" value="" name="data"/>
+	</tr>
+</tbody>
+</table>
+<a href="cadastroAdm">Cadastro de Usuários</a>
+<a href="efetuouLoginAdm">Tela de ADM</a>
+<a href="adclivro">Adicionar Livro</a>
+</body>
+</html>

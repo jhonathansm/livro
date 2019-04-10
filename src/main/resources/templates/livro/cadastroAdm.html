@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt"
+		xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://thymeleaf.org">
+<head>
+	<meta charset="utf-8"/>
+	<title> Cadastro ADM </title>
+</head>
+<body>
+
+<div th:each="usuario : ${usuario}">
+	
+		<form class="container" method="POST">
+			Id: <input th:value="${usuario.id}" readonly=true name="id"/> 		
+			Login: <input type="text" value="" name="login" /> 
+			Senha: <input type="password" value="" name="senha" /> 
+			Tipo: <select name="tipo">
+					<option value=1>Comum</option>
+					<option value=2>Adm</option>
+				  </select>
+
+			<button type="submit">Cadastrar</button>
+		</form>
+	</div>
+
+<a href="/efetuouLoginAdm" >Tela de Início</a>
+
+<th:block th:include="mensagemValidacao"></th:block>
+</body>
+
+</html>
