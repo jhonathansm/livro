@@ -1,8 +1,8 @@
 package com.projeto.livro.model;
 
 import java.io.Serializable;
-import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
+import java.util.concurrent.TimeUnit;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,16 +20,20 @@ public class Livro implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String nome, autor, editora;
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	private Calendar data;
+	
+	private Date dataSaida, dataRetorno;
 	private int ano, edicao, codigoBarras, preco, quantidade;
 	
 	public long getId() {
 		return id;
 	}
 	
-	public Calendar getData() {
-		return data;
+	public Date getDataSaida() {
+		return dataSaida;
+	}
+	
+	public Date getDataRetorno() {
+		return dataRetorno;
 	}
 	
 	public String getNome() {
@@ -65,13 +69,18 @@ public class Livro implements Serializable{
 	}
 	
 	//Setters
+	
+	
 	public void setId(long l) {
 		this.id = l;
 	}
 	
-	public void setData(Calendar data) {
-		this.data = data;
-		
+	public void setDataSaida(Date dataSaida) {
+		this.dataSaida = dataSaida;
+	}
+	
+	public void setDataRetorno(Date dataRetorno) {
+		this.dataRetorno = dataRetorno;
 	}
 	
 	public void setNome(String nome) {

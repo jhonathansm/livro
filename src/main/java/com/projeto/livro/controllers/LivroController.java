@@ -1,8 +1,8 @@
 package com.projeto.livro.controllers;
 
+import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+
 import java.util.List;
 
 
@@ -36,8 +36,7 @@ public class LivroController {
 	
 	
 	@RequestMapping(value="/adclivro", method = RequestMethod.GET)
-	public ModelAndView retornaLivro() {
-		
+	public ModelAndView retornaLivro() {	
 		ModelAndView liv = new ModelAndView("livro/adclivro");
 		liv.addObject("livro", lr.count()+1);
 	
@@ -77,13 +76,16 @@ public class LivroController {
 		return "redirect:/livroLivro";
 	}
 	
-	@RequestMapping("/adicionardata")
-	public String adicionarData(long id, Calendar data) {
+	@RequestMapping("/adicionarData")
+	public String adicionarData(long id, Date dataSaida, Date dataRetorno) {
 		Livro livro = lr.findById(id);
+		livro.setDataSaida(dataSaida);
+		livro.setDataRetorno(dataRetorno);
 		livro.setQuantidade(livro.getQuantidade()-1);
-		Calendar dat = data;
-		livro.setData(dat);
+		
+		
+		//livro.duracao();
 		lr.save(livro);
-		return "redirect:/livroLivro";
+		return "redirect:/index";
 	}
 }

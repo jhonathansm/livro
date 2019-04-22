@@ -9,7 +9,13 @@
 <body>
 <h5>Lista de Usuários</h5>
 
-<table>
+
+
+<form method="post">
+	Data Saída:	<input type="date" name="dataSaida"/>
+	Data Retorno: <input type="date" name="dataRetorno"/>
+	
+	<table>
 <thead>
 	<tr>
 		<th>Id</th>
@@ -24,6 +30,8 @@
 		<th>Emprestimo</th>
 	</tr>
 </thead>
+
+
 
 <tbody>
 
@@ -41,11 +49,15 @@
 		<td><a th:href="${(#mvc.url('LC#adicionarLivro').arg(0, livro.id)).build()}">Adicionar Livro</a></td>
 		<td><a th:href="${(#mvc.url('LC#removerLivro').arg(0, livro.id)).build()}">Remover Livro</a></td>
 		
-		<td><a th:href="${(#mvc.url('LC#adicionarData').arg(0, livro.id)).build()}">Emprestimo</a></td>
-		Data: <input type="text" value="" name="data"/>
+		<td><a th:href="${(#mvc.url('LC#adicionarData').arg(0, livro.id).arg(1, dataSaida).arg(2, dataRetorno)).build()}">Emprestimo</a></td>
+	
 	</tr>
+	
+	
+	
 </tbody>
-</table>
+</table>	
+</form>
 <a href="cadastroAdm">Cadastro de Usuários</a>
 <a href="efetuouLoginAdm">Tela de ADM</a>
 <a href="adclivro">Adicionar Livro</a>

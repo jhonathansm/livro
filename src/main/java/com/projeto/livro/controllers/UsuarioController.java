@@ -18,6 +18,7 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioRepository ur;
 	private String recebeLogin;
+	
 	@RequestMapping(value = "/index", method = RequestMethod.POST)
 	public String inserirUsuario(Usuario usuario, RedirectAttributes attributes) {
 		usuario.setId(ur.count()+1);
@@ -34,10 +35,8 @@ public class UsuarioController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(Usuario usuario) {
-		if(ur.findByLogin(usuario.getLogin()) != null) {
-			if(ur.findByLogin(usuario.getLogin()).getSenha().equals(usuario.getSenha())) {
-				recebeLogin = usuario.getLogin();
-				
+		if(ur.findByLogin(usuario.getLogin()) != null && 
+				ur.findByLogin(usuario.getLogin()).getSenha().equals(usuario.getSenha())) {
 				if(ur.findByLogin(usuario.getLogin()).getTipo() == 2){
 					
 					return "redirect:/efetuouLoginAdm";
@@ -47,15 +46,12 @@ public class UsuarioController {
 				}
 			}else {
 				
-				return "redirect:/login";
+				return "redirect:/index";
 			}
-		}else {
-			
-			return "redirect:/login";
 		}
 		
 				
-	}
+	
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String retornaLogin() {
